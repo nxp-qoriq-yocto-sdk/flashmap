@@ -1,0 +1,16 @@
+baudrate=115200
+bootargs=root=/dev/ram console=ttyS0,115200
+bootcmd=nand read 1000000 200000 400000;nand read c00000 100000 4000;nand read 2000000 600000 1A00000;bootm 1000000 2000000 c00000
+bootdelay=3
+bootfile=uImage
+eth1addr=00:E0:0C:02:02:02
+ethact=FM1@DTSEC1
+ethaddr=00:E0:0C:02:02:01
+fman_ucode=0x7f9333c8
+ipaddr=192.168.1.2
+loadaddr=1000000
+sataboot=setenv bootargs root=/dev/sda1 rw console=ttyS0,115200 rootdelay=5;nand read 1000000 200000 400000;nand read c00000 100000 4000;bootm 1000000 - c00000
+serverip=192.168.1.1
+stderr=serial
+stdin=serial
+stdout=serial

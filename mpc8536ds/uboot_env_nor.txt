@@ -1,0 +1,33 @@
+baudrate=115200
+bdev=sda3
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0xec000000 0xe8000000 0xeff00000
+bootdelay=3
+bootfile=uImage-mpc8536ds.bin
+consoledev=ttyS0
+eth1addr=00:E0:0C:02:01:FD
+eth2addr=00:E0:0C:02:02:FD
+eth3addr=00:E0:0C:02:03:FD
+ethact=eTSEC1
+ethaddr=00:E0:0C:02:00:FD
+fdtaddr=c00000
+fdtfile=uImage-mpc8536ds.dtb
+gatewayip=192.168.1.1
+hostname=unknown
+hwconfig=usb1:dr_mode=host,phy_type=ulpi
+ipaddr=192.168.1.201
+loadaddr=1000000
+loads_echo=1
+netdev=eth0
+netmask=255.255.255.0
+nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=8536ds/ramdisk.uboot
+rootpath=/opt/nfsroot
+sataboot=setenv bootargs root=/dev/$bdev rw rootdelay=5 console=$consoledev,$baudrate $othbootargs;bootm 0xec000000 - 0xeff00000
+serverip=192.168.1.1
+stderr=serial
+stdin=serial
+stdout=serial
+tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff80000 +$filesize; erase 0xeff80000 +$filesize; cp.b $loadaddr 0xeff80000 $filesize; protect on 0xeff80000 +$filesize; cmp.b $loadaddr 0xeff80000 $filesize
+uboot=u-boot.bin
