@@ -1,0 +1,29 @@
+baudrate=115200
+bdev=sda3
+bootcmd=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm ffc00000 - ff800000
+bootdelay=10
+bootfile=8544ds/uImage.uboot
+consoledev=ttyS0
+eth1addr=00:E0:0C:02:01:FD
+ethact=eTSEC1
+ethaddr=00:E0:0C:02:00:FD
+fdtaddr=c00000
+fdtfile=8544ds/mpc8544ds.dtb
+gatewayip=192.168.1.1
+hostname=mpc8544ds
+ipaddr=192.168.1.251
+loadaddr=1000000
+loads_echo=1
+netdev=eth0
+netmask=255.255.255.0
+nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=8544ds/ramdisk.uboot
+rootpath=/nfs/mpc85xx
+serverip=192.168.1.1
+stderr=serial
+stdin=serial
+stdout=serial
+tftpflash=tftpboot $loadaddr $uboot; protect off 0xfff80000 +$filesize; erase 0xfff80000 +$filesize; cp.b $loadaddr 0xfff80000 $filesize; protect on 0xfff80000 +$filesize; cmp.b $loadaddr 0xfff80000 $filesize
+uboot=8544ds/u-boot.bin
