@@ -1,0 +1,53 @@
+Introduction
+============
+This is flash image tool. version 1.0. It make complete flash image which
+contains everything (u-boot, uImage, rootfs, etc.) to be deployed to flash.
+
+Files
+============
+gen_flash_image.pl: the main script
+<board>: config file directory for each borad
+flashmap_nor.cfg: flashmap config file for nor flash
+flashmap_nand.cfg: flashmap config file for nand flash
+uboot_env_nor.txt: default uboot environment settting for nor
+uboot_env_nand.txt: default uboot environment settting for nand
+
+Usage
+============
+$ ./gen_flash_image.pl -h
+gen_flash_image.pl [-vh] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <var5>]
+    where:
+        -c <var1>     : flashmap config, 'flashmap.cfg' if not set
+        -e <var2>     : uboot environment, binary will not generated if not set
+        -d <var3>     : image location, current path if not set
+        -o <var4>     : output file, 'flash.img' if not set
+        -t <var5>     : tag string, 'BSP_VER=QorIQ-SDK' if not set
+        -v            : verbose
+        -h            : help
+
+Example
+============ 
+$ ./gen_flash_image.pl -c p2041rdb/flashmap_nor.cfg -e p2041rdb/uboot_env_nor.txt \
+   -d ../tmp/deploy/images/ -o p2041rdb-nor.img -t sdk-v1.2-rc3
+
+Note
+============
+Make sure files listed in flashmap.cfg can be found using path "${image_dir} + filename".
+Take p2041rdb as a example:
+
+<mapping_table>
+0xe8000000 rcw/RR_PH_0x19/rcw_5g_1500mhz.bin
+0xe8020000 uImage-p2041rdb.bin
+0xe8700000 hv/hv.uImage
+0xe8800000 uImage-p2041rdb.dtb
+0xe8900000 hv-cfg/RR_PX_0x09/hv-2p-lnx-lnx.dtb
+0xe9300000 fsl-image-flash-p2041rdb.ext2.gz.u-boot
+....
+</mapping_table>
+
+When option "-d ${image_dir}" was passed to the script, file "${image_dir}/hv/hv.uImage"
+does exist. Otherwise, the script will fail.
+
+The file structure is kept same with "build_${board}_release/tmp/deploy/images" in Yocto.
+You can directly pass the directory to the script.
+
