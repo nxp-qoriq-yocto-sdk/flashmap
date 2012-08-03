@@ -1,0 +1,34 @@
+baudrate=115200
+bdev=sda3
+bootcmd=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate $othbootargs;bootm e8020000 e9300000 e8800000
+bootdelay=3
+consoledev=ttyS0
+eth10addr=00:e0:0c:00:82:0a
+eth11addr=00:e0:0c:00:82:0b
+eth12addr=00:e0:0c:00:82:0c
+eth13addr=00:e0:0c:00:82:0d
+eth14addr=00:e0:0c:00:82:0e
+eth15addr=00:e0:0c:00:82:0f
+eth1addr=00:e0:0c:00:82:01
+eth2addr=00:e0:0c:00:82:02
+eth3addr=00:e0:0c:00:82:03
+eth4addr=00:e0:0c:00:82:04
+eth5addr=00:e0:0c:00:82:05
+eth6addr=00:e0:0c:00:82:06
+eth7addr=00:e0:0c:00:82:07
+eth8addr=00:e0:0c:00:82:08
+eth9addr=00:e0:0c:00:82:09
+ethaddr=00:e0:0c:00:82:00
+ethact=FM2@DTSEC5
+ethprime=FM2@DTSEC5
+gatewayip=10.192.208.254
+ipaddr=10.192.208.107
+netdev=eth0
+netmask=255.255.254.0
+serverip=10.192.208.136
+hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfe8900000;bootm 0xfe8700000 - 0xfe8800000
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1;fsl_fm1_xaui_phy:xfi;fsl_fm2_xaui_phy:xfi
+sataboot=setenv bootargs root=/dev/sda1 rootdelay=5 rw console=$consoledev,$baudrate $othbootargs;bootm e8020000 - e8800000
+stderr=serial
+stdin=serial
+stdout=serial
