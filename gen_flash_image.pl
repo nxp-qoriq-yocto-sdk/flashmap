@@ -10,7 +10,7 @@ use IO::Handle;
 use String::CRC32;
 use vars qw($opt_c $opt_d $opt_e $opt_o $opt_t $opt_h $out $fmap $ipath
             $opt_v @mtable $blocks $flash_start $flash_size $bspver
-            $uboot_envfile);
+            $opt_p $uboot_envfile);
 
 $opt_c = "";
 $opt_e = "";
@@ -19,6 +19,7 @@ $opt_o = "";
 $opt_t = "";
 $opt_v = "";
 $opt_h = "";
+$opt_p = "";
 @mtable = ();
 $blocks = 0;
 $flash_start = "";
@@ -27,23 +28,24 @@ $uboot_envfile = "environment.bin";
 
 my $usage = <<TXT;
 
-gen_flash_image.pl [-vh] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <var5>]
+gen_flash_image.pl [-vph] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <var5>]
     where:
         -c <var1>     : flashmap config, 'flashmap.cfg' if not set
         -e <var2>     : uboot environment, binary will not generated if not set
         -d <var3>     : image location, current path if not set
         -o <var4>     : output file, 'flash.img' if not set
-        -t <var5>     : tag string, 'BSP_VER=QorIQ-SDK' if not set
+        -t <var5>     : tag string, 'QorIQ-SDK-V1.3' if not set
+        -p            : preserve tmp files
         -v            : verbose
         -h            : help
 
 TXT
 
-getopts("c:d:e:o:t:vh") or die $usage;
+getopts("c:d:e:o:t:vph") or die $usage;
 die $usage if $opt_h;
 $fmap = ($opt_c eq '') ? "flashmap.cfg":$opt_c;
 $out = ($opt_o eq '') ? "flash.img":$opt_o;
-$bspver = ($opt_t eq '') ? "BSP_VER=QorIQ-SDK":$opt_t;
+$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.3":$opt_t;
 $ipath = ($opt_d eq '') ? ".":$opt_d;
 $ipath =~ s/\/$//;
 print "Generating flash image...\n";
@@ -102,9 +104,11 @@ for (my $n = 0; $n <= $blocks; $n++) {
 	close INFILE;
 }
 close $IMAGE;
-print "\nDeleting tmp files...\n" if $opt_v;
-unlink $uboot_withtag;
-unlink $uboot_envfile;
+if ( ! $opt_p ) {
+    print "\nDeleting tmp files...\n" if $opt_v;
+    unlink $uboot_withtag;
+    unlink $uboot_envfile;
+}
 print "\nFlash image generated.\n";
 
 ###########################################################
