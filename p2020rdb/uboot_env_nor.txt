@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
-bootargs=root=/dev/mtdblock3 rw rootfstype=jffs2 console=ttyS0,115200
-bootcmd=bootm 0xef080000 - 0xef040000
+bootargs=root=/dev/ram rw console=ttyS0,115200
+bootcmd=bootm 0xef080000 0xef400000 0xef040000
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
@@ -49,4 +49,6 @@ tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff80000 +$filesize; erase
 0xeff80000 +$filesize; cmp.b $loadaddr 0xeff80000 $filesize
 uboot=u-boot.bin
 vscfw_addr=ef000000
-
+ipaddr=192.168.1.100
+serverip=192.168.1.1
+gatewayip=192.168.1.1
