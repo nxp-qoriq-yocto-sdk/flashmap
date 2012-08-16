@@ -17,7 +17,7 @@ fdtfile=uImage-p5020ds.dtb
 fman_ucode=0xef000000
 gatewayip=192.168.1.1
 hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfe8900000;bootm 0xfe8700000 - 0xfe8800000
-hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1;fsl_fm1_xaui_phy:xfi
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1;fsl_fm1_xaui_phy:xfi;usb2:dr_mode=peripheral,phy_type=utmi;usb1:dr_mode=host,phy_type=utmi
 ipaddr=192.168.1.100
 loadaddr=1000000
 netdev=eth0
