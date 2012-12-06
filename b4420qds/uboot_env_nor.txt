@@ -1,0 +1,37 @@
+baudrate=115200
+bdev=sda1
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm ec020000 ed300000 ec800000
+bootdelay=3
+bootfile=uImage
+consoledev=ttyS0
+eth1addr=00:04:9f:ef:02:02
+eth2addr=00:04:9f:ef:02:03
+eth3addr=00:04:9f:ef:02:04
+eth4addr=00:04:9f:ef:02:05
+eth5addr=00:04:9f:ef:02:06
+ethact=FM1@DTSEC3
+ethaddr=00:04:9f:ef:02:01
+ethprime=FM1@DTSEC5
+fdtaddr=c00000
+fdtfile=uImage-b4420qds.dtb
+fman_ucode=0xeff40000
+gatewayip=192.168.1.1
+hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfec900000;bootm 0xfec700000 - 0xfec800000
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1
+ipaddr=192.168.1.100
+loadaddr=1000000
+netdev=eth0
+netmask=255.255.255.0
+nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=fsl-image-flash-b4420qds.ext2.gz.u-boot
+rootpath=/opt/nfsroot
+sataboot=setenv bootargs root=/dev/sda1 rootdelay=5 rw console=$consoledev,$baudrate $othbootargs;bootm ec020000 - ec800000
+serverip=192.168.1.1
+stderr=serial
+stdin=serial
+stdout=serial
+tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize
+uboot=u-boot-B4420QDS.bin
+ubootaddr=0xeff80000
