@@ -34,7 +34,7 @@ gen_flash_image.pl [-vph] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <v
         -e <var2>     : uboot environment, binary will not generated if not set
         -d <var3>     : image location, current path if not set
         -o <var4>     : output file, 'flash.img' if not set
-        -t <var5>     : tag string, 'QorIQ-SDK-V1.3' if not set
+        -t <var5>     : tag string, 'QorIQ-SDK-V1.3.2' if not set
         -p            : preserve tmp files
         -v            : verbose
         -h            : help
