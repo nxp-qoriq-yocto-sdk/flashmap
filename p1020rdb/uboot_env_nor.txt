@@ -16,12 +16,12 @@ jffs2nor=mtdblock3
 loadaddr=1000000
 map_lowernorbank=i2c dev 1; i2c mw 18 1 02 1; i2c mw 18 3 fd 1
 map_uppernorbank=i2c dev 1; i2c mw 18 1 00 1; i2c mw 18 3 fd 1
-nandboot=i2c dev 1; i2c mw 18 1 0xec 1; i2c mw 18 3 0x03 1; reset
+nandboot=i2c dev 1; i2c mw 18 1 0x14 1; i2c mw 18 3 0x03 1; reset
 nandbootaddr=100000
 nandfdtaddr=80000
 netdev=eth0
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
-norboot=i2c dev 1; i2c mw 18 1 0x5c 1; i2c mw 18 3 0x03 1; reset
+norboot=i2c dev 1; i2c mw 18 1 0xd4 1; i2c mw 18 3 0x03 1; reset
 norbootaddr=ef080000
 norfdtaddr=ef040000
 pciboot=i2c dev 1; i2c mw 18 1 0x6c 1; i2c mw 18 3 0x03 1; reset
@@ -31,8 +31,8 @@ ramdiskaddr=2000000
 ramdiskfile=rootfs.ext2.gz.uboot
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/sda3 rw console=$consoledev,$baudrate $othbootargs;bootm 0xef080000 - 0xef040000
-sdboot=i2c dev 1; i2c mw 18 1 0x9c 1; i2c mw 18 3 0x03 1; reset
-spiboot=i2c dev 1; i2c mw 18 1 0x1c 1; i2c mw 18 3 0x03 1; reset
+sdboot=i2c dev 1; i2c mw 18 1 0x54 1; i2c mw 18 3 0x03 1; reset
+spiboot=i2c dev 1; i2c mw 18 1 0x94 1; i2c mw 18 3 0x03 1; reset
 stderr=serial
 stdin=serial
 stdout=serial
