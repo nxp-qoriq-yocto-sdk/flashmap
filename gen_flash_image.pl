@@ -45,7 +45,7 @@ getopts("c:d:e:o:t:vph") or die $usage;
 die $usage if $opt_h;
 $fmap = ($opt_c eq '') ? "flashmap.cfg":$opt_c;
 $out = ($opt_o eq '') ? "flash.img":$opt_o;
-$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.3.1":$opt_t;
+$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.3.2":$opt_t;
 $ipath = ($opt_d eq '') ? ".":$opt_d;
 $ipath =~ s/\/$//;
 print "Generating flash image...\n";
