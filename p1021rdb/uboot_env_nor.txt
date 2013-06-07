@@ -16,9 +16,12 @@ hwconfig=usb1:dr_mode=host,phy_type=ulpi
 jffs2nand=mtdblock9
 jffs2nor=mtdblock3
 loadaddr=1000000
-map_lowernorbank=i2c dev 1;i2c md 18 0;i2c mw 18 1 02;i2c mw 18 3 fd;i2c md 18 0
-map_uppernorbank=i2c dev 1;i2c md 18 0;i2c mw 18 1 0;i2c mw 18 3 fd;i2c md 18 0
-nandboot=i2c dev 1; i2c mw 18 1 0x44 1; i2c mw 18 3 0x03 1; reset
+map_lowernorbank=i2c dev 1; i2c mw 18 1 02 1; i2c mw 18 3 fd 1
+map_uppernorbank=i2c dev 1; i2c mw 18 1 00 1; i2c mw 18 3 fd 1
+nandboot=i2c dev 1; i2c mw 18 1 0x14 1; i2c mw 18 3 0x03 1; reset
+pciboot=i2c dev 1; i2c mw 18 1 0xe4 1; i2c mw 18 3 0x03 1; reset
+sdboot=i2c dev 1; i2c mw 18 1 0x54 1; i2c mw 18 3 0x03 1; reset
+spiboot=i2c dev 1; i2c mw 18 1 0x94 1; i2c mw 18 3 0x03 1; reset
 nandbootaddr=100000
 nandfdtaddr=80000
 netdev=eth0
@@ -26,10 +29,8 @@ nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath
 ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off
 console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp
 $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
-norboot=i2c dev 1; i2c mw 18 1 0x64 1; i2c mw 18 3 0x03 1; reset
 norbootaddr=ef080000
 norfdtaddr=ef040000
-pciboot=i2c dev 1; i2c mw 18 1 0x74 1; i2c mw 18 3 0x03 1; reset
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate
 $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp
 $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr
@@ -39,8 +40,6 @@ ramdiskaddr=2000000
 ramdiskfile=fsl-image-flash-p1021rdb.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/sda3 rw console=ttyS0,115200;boot
-sdboot=i2c dev 1; i2c mw 18 1 0x24 1; i2c mw 18 3 0x03 1; reset
-spiboot=i2c dev 1; i2c mw 18 1 0x34 1; i2c mw 18 3 0x03 1; reset
 stderr=serial
 stdin=serial
 stdout=serial
