@@ -1,0 +1,21 @@
+baudrate=115200
+bootcmd=nand read 1000000 0x00400000 400000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
+bootdelay=10
+bootfile=uImage
+consoledev=ttyS0
+eth1addr=00:04:9F:02:04:12
+eth2addr=00:04:9F:02:04:13
+ethact=eTSEC1
+ethaddr=00:04:9F:02:04:11
+fdtaddr=c00000
+fdtfile=bsc9131rdb.dtb
+hostname=bsc9131rdb
+hwconfig=usb1:dr_mode=host,phy_type=utmi
+loadaddr=1000000
+netdev=eth0
+othbootargs=ramdisk_size=600000
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=rootfs.ext2.gz.uboot
+rootpath=/opt/nfsroot
+uboot=u-boot.bin
