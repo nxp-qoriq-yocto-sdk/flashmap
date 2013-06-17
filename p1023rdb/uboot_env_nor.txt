@@ -28,5 +28,5 @@ tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && eras
 stderr=serial
 stdin=serial
 stdout=serial
-bootcmd=setenv bootargs root=/dev/ram console=ttyS0,115200;bootm 0xef000000 - 0xefee0000
+bootcmd=setenv bootargs root=/dev/ram console=ttyS0,115200;bootm 0xef000000 0xec000000 0xefee0000
 
