@@ -1,21 +1,25 @@
 baudrate=115200
-bootcmd=nand read 1000000 0x00400000 400000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
-bootdelay=10
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;nand read 1000000 0x00400000 400000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
+bdev=sda1
 bootfile=uImage
+bootm_size=0x37000000
 consoledev=ttyS0
-eth1addr=00:04:9F:02:04:12
-eth2addr=00:04:9F:02:04:13
 ethact=eTSEC1
-ethaddr=00:04:9F:02:04:11
+ethprime=eTSEC1
+ethaddr=00:11:22:33:44:70
+eth1addr=00:11:22:33:44:71
 fdtaddr=c00000
 fdtfile=bsc9131rdb.dtb
-hostname=bsc9131rdb
-hwconfig=usb1:dr_mode=host,phy_type=utmi
+hostname=BSC9131rdb
+hwconfig=usb1:dr_mode=host,phy_type=ulpi
 loadaddr=1000000
 netdev=eth0
-othbootargs=ramdisk_size=600000
+othbootargs=ramdisk_size=600000 default_hugepagesz=256m hugepagesz=256m hugepages=1
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 ramdiskaddr=2000000
 ramdiskfile=rootfs.ext2.gz.uboot
 rootpath=/opt/nfsroot
 uboot=u-boot.bin
+usbext2boot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; usb start;ext2load usb 0:4 $loadaddr $bootfile;ext2load usb 0:4 $fdtaddr $fdtfile;ext2load usb 0:4 $ramdiskaddr $ramdiskfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+
+
