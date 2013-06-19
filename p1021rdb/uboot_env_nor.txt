@@ -10,6 +10,7 @@ eth2addr=00:11:22:33:44:77
 ethact=eTSEC1
 ethaddr=00:11:22:33:44:55
 fdtaddr=c00000
+fdtfile=p1021rdb.dtb
 filesize=62A9
 hostname=unknown
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
@@ -26,15 +27,15 @@ norboot=i2c dev 1; i2c mw 18 1 0xd4 1; i2c mw 18 3 0x03 1; reset
 nandbootaddr=100000
 nandfdtaddr=80000
 netdev=eth0
+rootpath=/opt/nfsroot
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
-norbootaddr=ef080000
-norfdtaddr=ef040000
-ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 ramdisk_size=120000
 ramdiskaddr=2000000
 ramdiskfile=fsl-image-flash-p1021rdb.ext2.gz.u-boot
-rootpath=/opt/nfsroot
-sataboot=setenv bootargs root=/dev/sda3 rw console=ttyS0,115200;boot
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+norbootaddr=ef080000
+norfdtaddr=ef040000
+sataboot=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm $norbootaddr - $norfdtaddr
 stderr=serial
 stdin=serial
 stdout=serial
