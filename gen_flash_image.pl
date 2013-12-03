@@ -34,7 +34,7 @@ gen_flash_image.pl [-vph] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <v
         -e <var2>     : uboot environment, binary will not generated if not set
         -d <var3>     : image location, current path if not set
         -o <var4>     : output file, 'flash.img' if not set
-        -t <var5>     : tag string, 'QorIQ-SDK-V1.4' if not set
+        -t <var5>     : tag string, 'QorIQ-SDK-V1.5' if not set
         -p            : preserve tmp files
         -v            : verbose
         -h            : help
@@ -45,7 +45,7 @@ getopts("c:d:e:o:t:vph") or die $usage;
 die $usage if $opt_h;
 $fmap = ($opt_c eq '') ? "flashmap.cfg":$opt_c;
 $out = ($opt_o eq '') ? "flash.img":$opt_o;
-$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.4":$opt_t;
+$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.5":$opt_t;
 $ipath = ($opt_d eq '') ? ".":$opt_d;
 $ipath =~ s/\/$//;
 print "Generating flash image...\n";
