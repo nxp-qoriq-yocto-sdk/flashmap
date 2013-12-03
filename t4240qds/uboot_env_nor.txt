@@ -40,9 +40,6 @@ ramdiskaddr=2000000
 ramdiskfile=t4240qds/ramdisk.uboot
 rootpath=/opt/nfsroot
 serverip=192.168.1.1
-rcw=t4240rcw
-rcwemmc=mw.w ffdf0060 2000
-tftprcw=tftpboot $loadaddr $rcw && mmcinfo && mmc write 1000000 8 1
 sataboot=setenv bootargs root=/dev/sda1 rootdelay=5 rw console=$consoledev,$baudrate $othbootargs;bootm e8020000 - e8800000
 stderr=serial
 stdin=serial
