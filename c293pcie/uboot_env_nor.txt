@@ -1,0 +1,27 @@
+baudrate=115200
+bootcmd=run norboot
+bootdelay=10
+bootfile=uImage
+consoledev=ttyS0
+ethact=eTSEC1
+ethprime=eTSEC1
+fdtaddr=c00000
+fdtfile=c293pcie.dtb
+fileaddr=1000000
+filesize=80400
+flashboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; cp.b fc600000 2000000 600000; bootm 0xfc000000 0x2000000 0xfc500000
+hwconfig=usb1:dr_mode=host,phy_type=utmi
+ipaddr=192.168.1.100
+loadaddr=1000000
+nand_erasesize=100000
+nand_oobsize=280
+nand_writesize=2000
+norboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; bootm ec000000 ed000000 ec400000
+othbootargs=ramdiskaddr=2000000
+ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=rootfs.ext2.gz.uboot
+rootpath=/opt/nfsroot
+serverip=192.168.1.1
+tftpblocksize=1024
+uboot=u-boot.bin
