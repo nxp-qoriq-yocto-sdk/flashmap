@@ -14,7 +14,7 @@ fdtfile=p1021rdb.dtb
 filesize=62A9
 hostname=unknown
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
-jffs2nand=mtdblock9
+jffs2nand=mtdblock10
 jffs2nor=mtdblock3
 loadaddr=1000000
 map_lowernorbank=i2c dev 1; i2c mw 18 1 02 1; i2c mw 18 3 fd 1
