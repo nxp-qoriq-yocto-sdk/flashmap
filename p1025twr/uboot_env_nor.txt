@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200
-bootcmd=bootm 0xec080000 0xec400000 0xec040000
+bootcmd=bootm 0xec080000 0xec600000 0xec040000
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
