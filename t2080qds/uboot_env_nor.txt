@@ -29,7 +29,7 @@ fileaddr=1000000
 filesize=200000
 fman_ucode=0xeff40000
 gatewayip=192.168.1.1
-hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=auto;usb1:dr_mode=host,phy_type=utmi
 hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfe8900000;bootm 0xfe8700000 - 0xfe8800000
 ipaddr=192.168.1.3
 loadaddr=1000000
