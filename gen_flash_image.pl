@@ -205,6 +205,8 @@ sub parse_cfg {
     	if (($mapping == 1) && ($#MATCHES > -1)) {
     		($addr = $line) =~ s/^ *(0x[[:xdigit:]]+) .*/$1/;
     		($filename = $line) =~ s/^ *(0x[[:xdigit:]]+) (.*) *$/$2/;
+    		$addr =~ s/^\s+|\s+$//g;
+    		$filename =~ s/^\s+|\s+$//g;
     		$mtable[$i][0] = hex $addr;
             if ($filename =~ "$uboot_envfile") {
     		    $mtable[$i][1] = $filename;
