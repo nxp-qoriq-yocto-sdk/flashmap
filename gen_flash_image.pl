@@ -9,7 +9,7 @@ use Getopt::Std;
 use IO::Handle;
 use String::CRC32;
 use vars qw($opt_c $opt_d $opt_e $opt_o $opt_t $opt_h $out $fmap $ipath
-            $opt_v @mtable $blocks $flash_start $flash_size $bspver
+            $opt_v @mtable $blocks $flash_start $flash_size
             $opt_p $uboot_envfile);
 
 $opt_c = "";
@@ -34,7 +34,7 @@ gen_flash_image.pl [-vph] [-c <var1>] [-e <var2>] [-d <var3>] [-o <var4>] [-t <v
         -e <var2>     : uboot environment, binary will not generated if not set
         -d <var3>     : image location, current path if not set
         -o <var4>     : output file, 'flash.img' if not set
-        -t <var5>     : tag string, 'QorIQ-SDK-V1.5' if not set
+        -t <var5>     : tag string, no tag will be inserted if not set
         -p            : preserve tmp files
         -v            : verbose
         -h            : help
@@ -45,13 +45,15 @@ getopts("c:d:e:o:t:vph") or die $usage;
 die $usage if $opt_h;
 $fmap = ($opt_c eq '') ? "flashmap.cfg":$opt_c;
 $out = ($opt_o eq '') ? "flash.img":$opt_o;
-$bspver = ($opt_t eq '') ? "QorIQ-SDK-V1.5":$opt_t;
 $ipath = ($opt_d eq '') ? ".":$opt_d;
 $ipath =~ s/\/$//;
 print "Generating flash image...\n";
 print "  uboot env: $opt_e\n" if $opt_e ne '';
 print "  flash map: $fmap\n  image path: $ipath\n";
-print "  Output: $out\n  tag: $bspver\n";
+print "  Output: $out\n";
+if ($opt_t ne '') {
+	printf "    Tag: $opt_t\n";
+}
 
 my $uboot_withtag = "u-boot_withtag.bin";
 my $tmp = "";
@@ -78,10 +80,10 @@ for (my $n = 0; $n <= $blocks; $n++) {
     # fill blank at the beginning, size: $mtable[$n][3]
 	print "Block: $n filling front blank, " if $opt_v;
     fill_blank($IMAGE, $mtable[$n][3]);
-	if ($mtable[$n][1] =~ /u-boot.*\.bin/) {
+	if (($mtable[$n][1] =~ /u-boot.*\.bin/) && ($opt_t ne '')) {
 		close INFILE;
         # add uboot tag, write to file $uboot_withtag
-		$tmp = add_uboottag($bspver, $mtable[$n][2], $mtable[$n][1], $uboot_withtag) + $mtable[$n][0];
+		$tmp = add_uboottag($opt_t, $mtable[$n][2], $mtable[$n][1], $uboot_withtag) + $mtable[$n][0];
 		printf "uboot tag position: 0x%08x\n", $tmp;
 		open INFILE, $uboot_withtag or
 	        die "Can not open img $uboot_withtag! $! \n";
@@ -91,11 +93,11 @@ for (my $n = 0; $n <= $blocks; $n++) {
         syswrite($IMAGE, $tmp, length($tmp));
     }
     # fill blank at the end, size: $mtable[$i][4]
-	if ($mtable[$n][1] =~ /uImage.*\.bin/) {
-		print "Adding tag $bspver for $mtable[$n][1]\n" if $opt_v;
+	if (($mtable[$n][1] =~ /uImage.*\.bin/) && ($opt_t ne '')) {
+		print "Adding tag $opt_t for $mtable[$n][1]\n" if $opt_v;
         printf "uImage tag position: 0x%08x\n", $mtable[$n][0] + $mtable[$n][2];
 	    print "Block: $n filling end blank, " if $opt_v;
-		fill_blank($IMAGE, $mtable[$n][4], $bspver);
+		fill_blank($IMAGE, $mtable[$n][4], $opt_t);
 	}
 	else {
 	    print "Block: $n filling end blank, " if $opt_v;
