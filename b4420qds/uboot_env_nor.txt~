@@ -9,17 +9,17 @@ eth3addr=00:04:9f:ef:02:04
 ethact=FM1@DTSEC3
 ethaddr=00:04:9f:ef:02:01
 ethprime=FM1@DTSEC3
-fdtaddr=1000000
+fdtaddr=c00000
 fdtfile=uImage-b4420qds.dtb
 gatewayip=192.168.1.1
 hwconfig=fsl_ddr:ctlr_intlv=null,bank_intlv=cs0_cs1;usb1:dr_mode=host,phy_type=ulpi
 ipaddr=192.168.1.100
-loadaddr=2000000
+loadaddr=1000000
 netdev=eth0
 netmask=255.255.255.0
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
-ramdiskaddr=4000000
+ramdiskaddr=2000000
 ramdiskfile=fsl-image-flash-b4420qds.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 serverip=192.168.1.1
@@ -28,4 +28,4 @@ stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize
 uboot=u-boot-B4420QDS.bin
-ubootaddr=0xeff40000
+ubootaddr=0xeff80000
