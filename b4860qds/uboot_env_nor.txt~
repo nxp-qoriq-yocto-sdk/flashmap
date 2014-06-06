@@ -15,7 +15,7 @@ eth9addr=00:e0:0c:00:a9:09
 ethact=FM1@DTSEC5
 ethaddr=00:e0:0c:00:a9:00
 ethprime=FM1@DTSEC5
-fdtaddr=1000000
+fdtaddr=c00000
 fdtfile=uImage-b4860qds.dtb
 gatewayip=192.168.1.1
 hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfec900000;bootm 0xfec700000 - 0xfec800000
@@ -32,4 +32,4 @@ rootpath=/opt/nfsroot
 serverip=192.168.1.1
 tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize
 uboot=u-boot-B4860QDS.bin
-ubootaddr=0xeff40000
+ubootaddr=0xeff80000

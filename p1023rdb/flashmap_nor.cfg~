@@ -8,5 +8,5 @@ env_size 0x2000
 0xefee0000 uImage-p1023rdb.dtb
 0xeff40000 fsl_fman_ucode_p1023_r1.1_160_0_18.bin
 0xeff60000 environment.bin
-0xeff40000 u-boot-P1023RDB.bin
+0xef40000 u-boot-P1023RDB.bin
 </mapping_table>
