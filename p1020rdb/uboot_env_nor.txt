@@ -30,6 +30,6 @@ sdboot=i2c dev 1; i2c mw 18 1 0x54 1; i2c mw 18 3 0x03 1; reset
 stderr=serial
 stdin=serial
 stdout=serial
-tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff80000 +$filesize; erase 0xeff80000 +$filesize; cp.b $loadaddr 0xeff80000 $filesize; protect on 0xeff80000 +$filesize; cmp.b $loadaddr 0xeff80000 $filesize
+tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesize
 uboot=u-boot.bin
 vscfw_addr=0xefe00000
