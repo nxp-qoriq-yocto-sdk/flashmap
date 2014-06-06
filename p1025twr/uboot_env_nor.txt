@@ -32,9 +32,10 @@ nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:
 stderr=serial
 stdin=serial
 stdout=serial
-tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff80000 +$filesize; erase 0xeff80000 +$filesize;cp.b $loadaddr 0xeff80000 $filesize; protect on 0xeff80000 +$filesize; cmp.b $loadaddr 0xeff80000 $filesize
+tftpflash=tftpboot $loadaddr $uboot; protect off $ubootaddr +$filesize; erase $ubootaddr +$filesize;cp.b $loadaddr $ubootaddr $filesize; protect on $ubootaddr +$filesize; cmp.b $loadaddr $ubootaddr $filesize
+ubootaddr=0xeff40000
 uboot=u-boot.bin
 usbboot=setenv bootargs root=/dev/$bdev rw rootdelay=5 console=$consoledev,$baudrate $othbootargs;bootm $norbootaddr - $norfdtaddr 
-ipaddr=192.168.1.100
-serverip=192.168.1.1
-gatewayip=192.168.1.1
+ipaddr=192.168.2.100
+serverip=192.168.2.1
+gatewayip=192.168.2.1
