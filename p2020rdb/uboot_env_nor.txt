@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200
-bootcmd=bootm 0xef080000 0xef500000 0xef040000
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
@@ -28,6 +28,7 @@ $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 norboot=i2c dev 1; i2c mw 18 1 0xc8 1; i2c mw 18 3 0x03 1; reset
 norbootaddr=ef080000
 norfdtaddr=ef040000
+norfsaddr=ef400000
 pciboot=i2c dev 1; i2c mw 18 1 0xa8 1; i2c mw 18 3 0x03 1; reset
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate
 $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp
@@ -44,9 +45,8 @@ spiboot=i2c dev 1; i2c mw 18 1 0x28 1; i2c mw 18 3 0x03 1; reset
 stderr=serial
 stdin=serial
 stdout=serial
-tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff80000 +$filesize; erase
-0xeff80000 +$filesize; cp.b $loadaddr 0xeff80000 $filesize; protect on
-0xeff80000 +$filesize; cmp.b $loadaddr 0xeff80000 $filesize
+tftpflash=tftpboot $loadaddr $uboot; protect off $ubootaddr +$filesize; erase $ubootaddr +$filesize; cp.b $loadaddr $ubootaddr $filesize; protect on $ubootaddr +$filesize; cmp.b $loadaddr $ubootaddr $filesize
+ubootaddr=0xeff40000
 uboot=u-boot.bin
 vscfw_addr=ef000000
 ipaddr=192.168.1.100
