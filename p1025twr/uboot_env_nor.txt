@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200
-bootcmd=bootm 0xec080000 0xec600000 0xec040000
+bootcmd= setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
@@ -21,8 +21,9 @@ loadaddr=1000000
 netdev=eth0
 norbootaddr=ec080000
 norfdtaddr=ec040000
+norfsaddr=0xec400000
 qefirmwarefile=fsl_qe_ucode_1021_10_A.bin
-qefirmwareflash=tftpboot $loadaddr $qefirmwarefile; protect off 0xefec0000 +$filesize;erase 0xefec0000 +$filesize; cp.b $loadaddr 0xefec0000 $filesize; protect on 0xefec0000 +$filesize;cmp.b $loadaddr 0xefec0000 $filesize
+qefirmwareflash=tftpboot $loadaddr $qefirmwarefile; protect off 0xefe80000 +$filesize;erase 0xefe80000 +$filesize; cp.b $loadaddr 0xefe80000 $filesize; protect on 0xefe80000 +$filesize;cmp.b $loadaddr 0xefe80000 $filesize
 ramdisk_size=120000
 ramdiskaddr=2000000
 ramdiskfile=fsl-image-flash-p1025twr.ext2.gz.u-boot

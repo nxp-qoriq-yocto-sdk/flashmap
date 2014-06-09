@@ -19,7 +19,7 @@ nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:
 norboot=i2c dev 1; i2c mw 18 1 0xd4 1; i2c mw 18 3 0x03 1; reset
 norbootaddr=ec020000
 norfdtaddr=ec000000
-norfsaddr=ec600000
+norfsaddr=ec400000
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 ramdisk_size=120000
 ramdiskaddr=2000000
@@ -32,4 +32,4 @@ stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesize
 uboot=u-boot.bin
-vscfw_addr=0xefe00000
+vscfw_addr=0xefdc0000
