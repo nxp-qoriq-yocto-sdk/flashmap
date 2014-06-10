@@ -28,7 +28,7 @@ $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 norboot=i2c dev 1; i2c mw 18 1 0xc8 1; i2c mw 18 3 0x03 1; reset
 norbootaddr=ef080000
 norfdtaddr=ef040000
-norfsaddr=ef400000
+norfsaddr=ef500000
 pciboot=i2c dev 1; i2c mw 18 1 0xa8 1; i2c mw 18 3 0x03 1; reset
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate
 $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp

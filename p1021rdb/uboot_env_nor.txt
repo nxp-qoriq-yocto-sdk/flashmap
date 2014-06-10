@@ -35,7 +35,7 @@ ramdiskfile=fsl-image-flash-p1021rdb.ext2.gz.u-boot
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 norbootaddr=ef080000
 norfdtaddr=ef040000
-norfsaddr=ef400000
+norfsaddr=ef500000
 sataboot=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm $norbootaddr - $norfdtaddr
 stderr=serial
 stdin=serial
