@@ -19,7 +19,7 @@ fdtaddr=1000000
 fdtfile=uImage-b4860qds.dtb
 gatewayip=192.168.1.1
 hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfec900000;bootm 0xfec700000 - 0xfec800000
-hwconfig=fsl_ddr:ctlr_intlv=null,bank_intlv=cs0_cs1;usb1:dr_mode=host,phy_type=ulpi
+hwconfig=fsl_ddr:ctlr_intlv=null,bank_intlv=cs0_cs1;usb1:dr_mode=host,phy_type=ulpi;fsl_fm1_xaui_phy:xfi;fsl_b4860_serdes2:sfp_amc=sfp
 ipaddr=192.168.1.100
 loadaddr=1000000
 netdev=eth0
