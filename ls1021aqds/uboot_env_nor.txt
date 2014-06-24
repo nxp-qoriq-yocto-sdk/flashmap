@@ -1,0 +1,33 @@
+baudrate=115200
+boot_bank0=i2c mw 0x66 0x50 0x40;i2c mw 0x66 0x10 0x20;i2c mw 0x66 0x10 0x21
+boot_bank4=i2c mw 0x66 0x50 0x44;i2c mw 0x66 0x10 0x20;i2c mw 0x66 0x10 0x21
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0x60120000 0x60920000 0x60020000
+bootargs=root=/dev/ram0 rw console=ttyS0,115200
+bootdelay=3
+bootfile=b40467/ls1021aqds/20140619/uImage-ls1021aqds.bin
+eth1addr=00:e0:0c:bc:e5:61
+eth2addr=00:e0:0c:bc:e5:62
+eth3addr=00:e0:0c:bc:e5:63
+ethact=eTSEC2
+ethaddr=00:e0:0c:bc:e5:60
+ethprime=eTSEC2
+fdt_high=0xcfffffff
+fdtfile=b40467/ls1021aqds/20140619/uImage-ls1021a-qds.dtb
+fileaddr=80000000
+filesize=e5
+hwconfig=fsl_ddr:ctlr_intlv=null,bank_intlv=auto
+initrd_high=0xcfffffff
+ipaddr=192.168.2.80
+loadaddr=0x82000000
+nand_erasesize=20000
+nand_oobsize=40
+nand_writesize=800
+ramboot=tftp 82000000 $bootfile;tftp 8f000000 $fdtfile;tftp 88000000 $ramdiskfile;bootm 82000000 88000000 8f000000
+ramdiskfile=b40467/ls1021aqds/20140619/fsl-image-core-ls1021aqds.ext2.gz.u-boot
+scsidevs=0
+serverip=192.168.2.1
+stderr=serial
+stdin=serial
+stdout=serial
+
+
