@@ -1,7 +1,7 @@
 baudrate=115200
 boot_bank0=i2c mw 0x66 0x50 0x40;i2c mw 0x66 0x10 0x20;i2c mw 0x66 0x10 0x21
 boot_bank4=i2c mw 0x66 0x50 0x44;i2c mw 0x66 0x10 0x20;i2c mw 0x66 0x10 0x21
-bootargs=root=/dev/ram0 rw console=ttyS0,115200
+bootargs=root=/dev/ram0 rw console=ttyLP0,115200
 bootcmd=bootm 60120000 60920000 60020000
 bootdelay=3
 eth1addr=00:e0:0c:bc:e5:61
