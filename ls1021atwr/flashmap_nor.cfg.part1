@@ -1,0 +1,13 @@
+start 0x60000000
+size  0x04000000
+env_size 0x20000
+
+<mapping_table>
+0x60000000 rcw/SSR_PPN_20/rcw_1000.bin
+0x60020000 uImage-ls1021a-twr.dtb
+0x60120000 uImage-ls1021atwr.bin
+0x60920000 fsl-image-flash-ls1021atwr.ext2.gz.u-boot
+0x63f40000 qe-ucode.bin
+0x63f60000 environment.bin
+0x63f80000 u-boot-ls1021atwr_lpuart.bin
+</mapping_table>
