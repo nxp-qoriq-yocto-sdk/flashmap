@@ -4,9 +4,9 @@ bootdelay=10
 hostname=p1023rdb
 ethact=FM1@DTSEC1
 ethprime=FM1@DTSEC1
-ethaddr=00:1e:59:b8:7e:8d
-eth1addr=00:1e:59:b8:7e:8e
-eth2addr=00:1e:59:b8:7e:8f
+ethaddr=00:04:9f:b8:7e:8d
+eth1addr=00:04:9f:b8:7e:8e
+eth2addr=00:04:9f:b8:7e:8f
 fileaddr=C00000
 fman_ucode=0xeff20000
 hwconfig=usb1:dr_mode=host,phy_type=ulpi

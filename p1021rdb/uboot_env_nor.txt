@@ -5,10 +5,10 @@ bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othboota
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
-eth1addr=00:11:22:33:44:66
-eth2addr=00:11:22:33:44:77
+eth1addr=00:04:9f:33:44:66
+eth2addr=00:04:9f:33:44:77
 ethact=eTSEC1
-ethaddr=00:11:22:33:44:55
+ethaddr=00:04:9f:33:44:55
 fdtaddr=c00000
 fdtfile=p1021rdb.dtb
 filesize=62A9

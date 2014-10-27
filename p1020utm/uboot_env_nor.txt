@@ -5,10 +5,10 @@ bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othboota
 bootdelay=3
 bootfile=uImage
 consoledev=ttyS0
-eth1addr=00:ec:0c:0e:01:fd
-eth2addr=00:ec:0c:0e:02:fd
+eth1addr=00:04:9f:0e:01:fd
+eth2addr=00:04:9f:0e:02:fd
 ethact=eTSEC1
-ethaddr=00:ec:0c:0e:00:fd
+ethaddr=00:04:9f:0e:00:fd
 fdtaddr=c00000
 fdtfile=p1020utm.dtb
 hostname=unknown

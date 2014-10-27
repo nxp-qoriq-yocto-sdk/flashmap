@@ -5,10 +5,10 @@ bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othboota
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
-eth1addr=00:11:22:33:44:99
-eth2addr=00:11:22:33:44:aa
+eth1addr=00:04:9f:33:44:99
+eth2addr=00:04:9f:33:44:aa
 ethact=eTSEC1
-ethaddr=00:11:22:33:44:88
+ethaddr=00:04:9f:33:44:88
 fdtaddr=c00000
 hostname=unknown
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
