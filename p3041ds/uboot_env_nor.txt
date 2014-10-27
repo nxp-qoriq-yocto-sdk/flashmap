@@ -2,13 +2,13 @@ baudrate=115200
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm e8020000 e9300000 e8800000
 bootdelay=3
 consoledev=ttyS0
-eth1addr=00:E0:0C:02:01:DD
-eth2addr=00:E0:0C:02:02:DD
-eth3addr=00:E0:0C:02:03:DD
-eth4addr=00:E0:0C:02:04:DD
-eth5addr=00:E0:0C:02:05:DD
+eth1addr=00:04:9f:02:01:DD
+eth2addr=00:04:9f:02:02:DD
+eth3addr=00:04:9f:02:03:DD
+eth4addr=00:04:9f:02:04:DD
+eth5addr=00:04:9f:02:05:DD
 ethact=FM1@DTSEC5
-ethaddr=00:E0:0C:02:00:DD
+ethaddr=00:04:9f:02:00:DD
 ethprime=FM1@DTSEC5
 gatewayip=192.168.1.1
 hvboot=setenv bootargs console=ttyS0,115200 config-addr=0xfe8900000;bootm 0xfe8700000 - 0xfe8800000

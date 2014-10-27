@@ -4,9 +4,9 @@ bootcmd=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm f
 bootdelay=10
 bootfile=8544ds/uImage.uboot
 consoledev=ttyS0
-eth1addr=00:E0:0C:02:01:FD
+eth1addr=00:04:9f:02:01:FD
 ethact=eTSEC1
-ethaddr=00:E0:0C:02:00:FD
+ethaddr=00:04:9f:02:00:FD
 fdtaddr=c00000
 fdtfile=8544ds/mpc8544ds.dtb
 gatewayip=192.168.1.1

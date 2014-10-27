@@ -4,11 +4,11 @@ bootargs=root=/dev/ram0 rw console=ttyLP0,115200
 bootdelay=3
 bootfile=ls1021atwr/uImage-ls1021atwr.bin
 dnsip=10.192.130.201
-eth1addr=00:e0:0c:bc:e5:61
-eth2addr=00:e0:0c:bc:e5:62
-eth3addr=00:e0:0c:bc:e5:63
+eth1addr=00:04:9f:bc:e5:61
+eth2addr=00:04:9f:bc:e5:62
+eth3addr=00:04:9f:bc:e5:63
 ethact=eTSEC1
-ethaddr=00:e0:0c:bc:e5:60
+ethaddr=00:04:9f:bc:e5:60
 ethprime=eTSEC1
 fdt_high=0xcfffffff
 fdtfile=ls1021atwr/ls1021a-twr.dtb

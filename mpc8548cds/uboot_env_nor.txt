@@ -4,11 +4,11 @@ bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othboota
 bootdelay=10
 bootfile=8548cds/uImage.uboot
 consoledev=ttyS1
-eth1addr=00:E0:0C:00:01:FD
-eth2addr=00:E0:0C:00:02:FD
-eth3addr=00:E0:0C:00:03:FD
+eth1addr=00:04:9f:00:01:FD
+eth2addr=00:04:9f:00:02:FD
+eth3addr=00:04:9f:00:03:FD
 ethact=eTSEC0
-ethaddr=00:E0:0C:00:00:FD
+ethaddr=00:04:9f:00:00:FD
 fdtaddr=c00000
 fdtfile=mpc8548cds.dtb
 gatewayip=192.168.1.1
