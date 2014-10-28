@@ -1,32 +1,29 @@
 baudrate=115200
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0x60120000 0x60920000 0x60020000
-bootargs=root=/dev/ram0 rw console=ttyS0,115200
+bootargs=root=/dev/ram rw console=$consoledev,$baudrate
 bootdelay=3
 bootfile=ls1021atwr/uImage-ls1021atwr.bin
 dnsip=10.192.130.201
 ethact=eTSEC1
 ethprime=eTSEC1
 fdt_high=0xcfffffff
-fdtfile=ls1021atwr/ls1021a-twr.dtb
+fdtfile=ls1021atwr/ls1021atwr.dtb
 fileaddr=88000000
 filesize=1245531
 gatewayip=10.192.208.254
 initrd_high=0xcfffffff
 ipaddr=10.192.208.250
-lcd_test_b1=mw 0x1570200 0xffffffff;mw 0x1570028 0x00000280;mw 0x2ce0054 0x27000000;mw 0x2ce0018 0x1e001001;mw 0x2ce001c 0x02488100;mw 0x2ce0020 0x02104000;mw 0x2ce0024 0x03000000;mw 0x2ce0010 0x03800000;
-lcd_test_b2=mw 0x2ce00cc 0x04000040;sleep 1;mw 0x2ce0010 0x03c00000;mw 0x2ce00cc 0x04000080;sleep 10;protect off all;erase 60000000 6001ffff;cp.b 67f20000 82000000 100;cp.b 82000000 60000000 100;
-lcdinit=protect off all;erase 60000000 6001ffff;cp.b 63f00000 82000000 100;cp.b 82000000 60000000 100;
 loadaddr=0x82000000
 netmask=255.255.255.0
 ramboot=dhcp 82000000 $bootfile;dhcp 8f000000 $fdtfile;dhcp 88000000 $ramdiskfile;bootm 82000000 88000000 8f000000
-ramdiskfile=ls1021atwr/fsl-image-core-ls1021atwr.ext2.gz.u-boot
-recover=set bootcmd;save;reset;
+usbboot=setenv bootargs root=/dev/sda1 rw console=$consoledev,$baudrate rootdelay=10;bootm 0x60120000 - 0x60020000
+ramdiskfile=ls1021atwr/fsl-image-x11-ls1021atwr.ext2.gz.u-boot
 scsidevs=0
 serverip=10.192.208.141
 stderr=serial
 stdin=serial
 stdout=serial
-consoledev=ttyS0
+consoledev=ttyLP0
 
 Environment size: 1332/131068 bytes
 
