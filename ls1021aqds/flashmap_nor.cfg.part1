@@ -1,0 +1,13 @@
+start 0x60000000
+size  0x04000000
+env_size 0x20000
+
+<mapping_table>
+0x60000000 rcw/ls1021aqds/NNR_PSS_NN_60/rcw_1000.bin
+0x60020000 uImage-ls1021a-qds.dtb
+0x60120000 uImage-ls1021aqds.bin
+0x60920000 fsl-image-core-ls1021aqds.ext2.gz.u-boot
+0x63f40000 iram_Type_A_T1040_r1.0.bin
+0x63f60000 environment.bin
+0x63f80000 u-boot-ls1021aqds_lpuart.bin
+</mapping_table>
