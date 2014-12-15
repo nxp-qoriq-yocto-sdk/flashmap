@@ -7,7 +7,7 @@ env_size 0x20000
 0x64020000 uImage-ls1021a-twr.dtb
 0x64120000 uImage-ls1021atwr.bin
 0x64920000 fsl-image-x11-ls1021atwr.ext2.gz.u-boot
-0x67f40000 iram_Type_A_T1040_r1.0.bin
+0x67f40000 iram_Type_A_LS1021a_r1.0.bin
 0x67f60000 environment.bin
 0x67f80000 u-boot-ls1021atwr.bin
 </mapping_table>
