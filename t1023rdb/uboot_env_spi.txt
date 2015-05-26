@@ -1,0 +1,29 @@
+udrate=115200
+bdev=sda3
+bootargs=root=/dev/ram rw console=ttyS0,115200
+bootcmd=setenv bootargs root=/dev/ram rw console=ttyS0,115200 $othbootargs;sf probe 0;sf read 1000000 400000 500000;sf read 2000000 300000 10000;sf read 5000000 a00000 3600000;bootm 1000000 5000000 2000000
+bootdelay=10
+bootfile=uImage
+consoledev=ttyS0
+eth1addr=00:04:9F:03:9E:5B
+eth2addr=00:04:9F:03:9E:5C
+eth3addr=00:15:17:be:d6:2d
+ethact=FM1@DTSEC4
+ethaddr=00:04:9F:03:9E:5A
+ethprime=FM1@DTSEC4
+fdtaddr=c00000
+fdtfile=t1023rdb/t1023rdb.dtb
+fman_ucode=7f4f4a48
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=null
+loadaddr=1000000
+netdev=eth0
+nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
+ramdiskaddr=2000000
+ramdiskfile=t1023rdb/ramdisk.uboot
+rootpath=/opt/nfsroot
+tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize
+uboot=u-boot.bin
+ubootaddr=0x30001000
+usb1:dr_mode=host,phy_type=utmi
+
+Environment size: 1287/8188 bytes
