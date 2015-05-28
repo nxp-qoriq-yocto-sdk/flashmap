@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200 mem=880M ramdisk_size=600000 default_hugepagesz=256m hugepagesz=256m hugepages=1 isolcpus=0
-bootcmd=run debug_halt_off;nand read 1000000 0x00400000 400000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
+bootcmd=run debug_halt_off;nand read 1000000 0x00400000 a00000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
 bootfile=uImage
 consoledev=ttyS0
 debug_halt_off=mw ff7e0e30 0xf0000000;

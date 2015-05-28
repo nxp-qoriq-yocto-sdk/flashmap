@@ -1,5 +1,5 @@
 baudrate=115200
-bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;nand read 1000000 0x00400000 400000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;nand read 1000000 0x00400000 a00000;nand read 2000000 0x00c00000 3500000;nand read c00000 0x00300000 100000;bootm 1000000 2000000 c00000
 bdev=sda1
 bootfile=uImage
 bootm_size=0x37000000
