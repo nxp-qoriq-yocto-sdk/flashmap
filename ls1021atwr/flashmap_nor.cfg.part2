@@ -3,7 +3,7 @@ size  0x04000000
 env_size 0x20000
 
 <mapping_table>
-0x64000000 rcw/ls1021atwr/SSR_PPN_20/rcw_1000_dcu.bin
+0x64000000 rcw/ls1021atwr/SSR_PPN_20/rcw_1000_lpuart.bin
 0x64020000 uImage-ls1021a-twr.dtb
 0x64120000 uImage-ls1021atwr.bin
 0x64920000 fsl-image-x11-ls1021atwr.ext2.gz.u-boot
