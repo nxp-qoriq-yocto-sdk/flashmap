@@ -1,7 +1,8 @@
 baudrate=115200
 bdev=sda3
-bootargs=root=/dev/ram rw console=ttyS0,115200 usdpaa_mem=256M qportals=0 bportals=0
+bootargs=root=/dev/ram rw console=ttyS0,115200
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs mem=4G;bootm e8020000 e9300000 e8800000
+othbootargs=ramdisk_size=1000000
 bootdelay=3
 bootfile=uImage
 c=ffe
