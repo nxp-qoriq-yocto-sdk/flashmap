@@ -1,6 +1,6 @@
 baudrate=115200
 bdev=sda3
-bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm ee080000 ef200000 ee040000
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm ee080000 ef300000 ee040000
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
