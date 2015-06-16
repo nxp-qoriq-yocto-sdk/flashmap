@@ -12,7 +12,6 @@ fdtfile=c293pcie.dtb
 fileaddr=1000000
 filesize=80400
 flashboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; cp.b fc600000 2000000 600000; bootm 0xfc000000 0x2000000 0xfc500000
-hwconfig=usb1:dr_mode=host,phy_type=utmi
 ipaddr=192.168.1.100
 loadaddr=1000000
 nand_erasesize=100000
