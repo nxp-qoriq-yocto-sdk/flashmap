@@ -1,16 +1,13 @@
 baudrate=115200
 bootargs=root=/dev/ram0 rw console=ttyLP0,115200
-bootcmd=cp.b 60300000 82000000 2f6358;cp.b 60a00000 88000000 18b5505; cp.b 60200000 8f000000 54b7;bootm 82000000 88000000 8f000000;
+bootcmd=cp.b 60300000 82000000 700000;cp.b 60a00000 88000000 2000000; cp.b 60200000 8f000000 10000;bootm 82000000 88000000 8f000000;
 bootdelay=3
 dnsip=10.192.130.201
-eth1addr=00:1b:21:81:cb:11
-eth2addr=00:1b:21:81:cb:12
 ethact=eTSEC3
-ethaddr=00:1b:21:81:cb:10
 ethprime=eTSEC3
-fdt_high=0xcfffffff
+fdt_high=0xffffffff
 gatewayip=10.193.20.254
-initrd_high=0xcfffffff
+initrd_high=0xffffffff
 ipaddr=10.193.20.191
 netmask=255.255.255.0
 scsidevs=0
