@@ -20,7 +20,7 @@ ethprime=FM1@DTSEC4
 fdtaddr=e00000
 fdtfile=t1024rdb.dtb
 fman_ucode=eff00000
-hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=cs0_cs1
+hwconfig=fsl_ddr:ctlr_intlv=cacheline,bank_intlv=null
 ipaddr=192.168.1.100
 loadaddr=1000000
 netdev=eth0
