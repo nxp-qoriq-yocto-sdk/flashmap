@@ -1,5 +1,5 @@
 baudrate=115200
-bootargs=root=/dev/ram0 rw console=ttyS0,115200
+bootargs=root=/dev/ram0 rw console=ttyS0,115200 ramdisksize=1000000
 bootcmd=cp.b 60300000 82000000 700000;cp.b 60a00000 88000000 2000000; cp.b 60200000 8f000000 10000;bootm 82000000 88000000 8f000000;
 bootdelay=3
 dnsip=10.192.130.201

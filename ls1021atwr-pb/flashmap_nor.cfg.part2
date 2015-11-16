@@ -4,10 +4,10 @@ env_size 0x20000
 
 <mapping_table>
 0x64000000 rcw/ls1021atwr/SSR_PNS_30/rcw_1000_lpuart.bin
-0x640c0000 iram_Type_A_LS1021a_r1.0.bin
+0x640c0000 boot/iram_Type_A_LS1021a_r1.0.bin
 0x640e0000 environment.bin
 0x64100000 u-boot-lpuart.bin
 0x64200000 uImage-ls1021a-twr.dtb
 0x64300000 uImage-ls1021atwr.bin
-0x64a00000 fsl-image-x11-ls1021atwr.ext2.gz.u-boot
+0x64a00000 core-image-x11-ls1021atwr.ext2.gz.u-boot
 </mapping_table>

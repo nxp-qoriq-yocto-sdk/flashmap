@@ -4,7 +4,7 @@ env_size 0x20000
 
 <mapping_table>
 0x60000000 rcw/ls1021atwr/RSR_PPS_70/rcw_1000.bin
-0x600c0000 iram_Type_A_LS1021a_r1.0.bin
+0x600c0000 boot/iram_Type_A_LS1021a_r1.0.bin
 0x600e0000 environment.bin
 0x60100000 u-boot-twr.bin
 0x60200000 uImage-ls1021a-twr.dtb

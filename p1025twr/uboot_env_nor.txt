@@ -1,7 +1,7 @@
 baudrate=115200
 bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200
-bootcmd= setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
+bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
 bootdelay=10
 bootfile=uImage
 consoledev=ttyS0
