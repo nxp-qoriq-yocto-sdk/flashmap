@@ -9,7 +9,7 @@ eth1addr=00:04:9F:02:8C:F7
 ethact=eTSEC1
 ethaddr=00:04:9F:02:8C:F6
 ethprime=eTSEC1
-fdtaddr=c00000
+fdtaddr=2000000
 fdtfile=bsc9132qds.dtb
 hostname=BSC9132qds
 hwconfig=sim;usb1:dr_mode=host,phy_type=ulpi
@@ -22,7 +22,7 @@ netdev=eth0
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 othbootargs=mem=880M ramdisk_size=600000 default_hugepagesz=256m hugepagesz=256m hugepages=1 isolcpus=0
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
-ramdiskaddr=2000000
+ramdiskaddr=5000000
 ramdiskfile=rootfs.ext2.gz.uboot
 rootpath=/opt/nfsroot
 serverip=192.168.1.1

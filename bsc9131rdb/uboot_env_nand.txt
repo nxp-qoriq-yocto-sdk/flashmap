@@ -8,7 +8,7 @@ ethact=eTSEC1
 ethprime=eTSEC1
 ethaddr=00:04:9f:33:44:70
 eth1addr=00:04:9f:33:44:71
-fdtaddr=c00000
+fdtaddr=2000000
 fdtfile=bsc9131rdb.dtb
 hostname=BSC9131rdb
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
@@ -16,7 +16,7 @@ loadaddr=1000000
 netdev=eth0
 othbootargs=ramdisk_size=600000 default_hugepagesz=256m hugepagesz=256m hugepages=1
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
-ramdiskaddr=2000000
+ramdiskaddr=5000000
 ramdiskfile=rootfs.ext2.gz.uboot
 rootpath=/opt/nfsroot
 uboot=u-boot.bin
