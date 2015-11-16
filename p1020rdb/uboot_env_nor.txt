@@ -31,5 +31,5 @@ stderr=serial
 stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesize
-uboot=u-boot-p1020rdb.bin
+uboot=u-boot-nor.bin
 vscfw_addr=0xefdc0000

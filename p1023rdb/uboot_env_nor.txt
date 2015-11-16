@@ -7,21 +7,21 @@ ethprime=FM1@DTSEC1
 ethaddr=00:04:9f:b8:7e:8d
 eth1addr=00:04:9f:b8:7e:8e
 eth2addr=00:04:9f:b8:7e:8f
-fileaddr=C00000
+fileaddr=5000000
 fman_ucode=0xeff20000
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
-loadaddr=100000
+loadaddr=1000000
 sataboot=setenv bootargs root=/dev/sda1 rw rootfstype=ext2 console=ttyS0,115200;bootm 0xef000000 - 0xefee0000
 serverip=192.168.1.1
 ipaddr=192.168.1.100
 netmask=255.255.254.0
 gatewayip=192.168.1.254
 bootfile=uImage-p1023rds.bin
-ramdiskfile=fsl-image-flash-p1023rdb.ext2.gz.u-boot
+ramdiskfile=fsl-image-mfgtool-p1023rdb.ext2.gz.u-boot
 fdtfile=uImage-p1023rds.dtb
-ramdiskaddr=4000000
-fdtaddr=1000000
-loadaddr=0x2000000
+ramdiskaddr=0x5000000
+fdtaddr=2000000
+loadaddr=1000000
 ubootaddr=0xeff40000
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize

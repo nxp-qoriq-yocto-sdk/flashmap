@@ -2,7 +2,7 @@ baudrate=115200
 bdev=sda3
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm ee080000 ef300000 ee040000
 bootdelay=10
-bootfile=u-boot-p1010rdb.bin
+bootfile=u-boot-nor.bin
 consoledev=ttyS0
 eth1addr=00:04:9F:02:04:12
 eth2addr=00:04:9F:02:04:13
@@ -22,6 +22,6 @@ rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm ee080000 - ee040000
 tftpflash=tftpboot $loadaddr $uboot; protect off $ubootaddr +$filesize; erase $ubootaddr +$filesize; cp.b $loadaddr $ubootaddr $filesize; protect on $ubootaddr +$filesize; cmp.b $loadaddr $ubootaddr $filesize
 ubootaddr=0xeff40000
-uboot=u-boot-p1010rdb.bin
+uboot=u-boot-nor.bin
 usbext2boot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; usb start;ext2load usb 0:4 $loadaddr $bootfile;ext2load usb 0:4 $fdtaddr $fdtfile;ext2load usb 0:4 $ramdiskaddr $ramdiskfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 usbfatboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs; usb start;fatload usb 0:2 $loadaddr $bootfile;fatload usb 0:2 $fdtaddr $fdtfile;fatload usb 0:2 $ramdiskaddr $ramdiskfile;bootm $loadaddr $ramdiskaddr $fdtaddr
