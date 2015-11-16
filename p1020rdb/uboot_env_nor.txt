@@ -2,13 +2,13 @@ baudrate=115200
 bdev=sda3
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
 bootdelay=10
-bootfile=uImage
+bootfile=uImage-p1020rdb.bin
 consoledev=ttyS0
 eth1addr=00:04:9F:01:B1:59
 eth2addr=00:04:9F:01:B1:5a
 ethact=eTSEC1
 ethaddr=00:04:9F:01:B1:58
-fdtaddr=c00000
+fdtaddr=2000000
 hostname=p1020rdb-pd
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
 loadaddr=1000000
@@ -22,8 +22,8 @@ norfdtaddr=ec000000
 norfsaddr=ec600000
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 ramdisk_size=120000
-ramdiskaddr=2000000
-ramdiskfile=rootfs.ext2.gz.uboot
+ramdiskaddr=5000000
+ramdiskfile=fsl-image-core-p1020rdb.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate;bootm $norbootaddr - $norfdtaddr
 sdboot=i2c dev 1; i2c mw 18 1 0x54 1; i2c mw 18 3 0x03 1; reset
@@ -31,5 +31,5 @@ stderr=serial
 stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesize
-uboot=u-boot.bin
+uboot=u-boot-p1020rdb.bin
 vscfw_addr=0xefdc0000

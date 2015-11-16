@@ -3,13 +3,13 @@ bdev=sda1
 bootargs=root=/dev/ram rw console=ttyS0,115200
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs ramdisk_size=$ramdisk_size;bootm $norbootaddr $norfsaddr $norfdtaddr
 bootdelay=10
-bootfile=uImage
+bootfile=uImage-p2020rdb.bin
 consoledev=ttyS0
 eth1addr=00:04:9f:33:44:99
 eth2addr=00:04:9f:33:44:aa
 ethact=eTSEC1
 ethaddr=00:04:9f:33:44:88
-fdtaddr=c00000
+fdtaddr=2000000
 hostname=unknown
 hwconfig=usb1:dr_mode=host,phy_type=ulpi
 jffs2nand=mtdblock9
@@ -35,8 +35,8 @@ $othbootargs ramdisk_size=$ramdisk_size;tftp $ramdiskaddr $ramdiskfile;tftp
 $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr
 $fdtaddr
 ramdisk_size=120000
-ramdiskaddr=2000000
-ramdiskfile=rootfs.ext2.gz.uboot
+ramdiskaddr=5000000
+ramdiskfile=fsl-image-core-p2020rdb.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/sda3 rw console=$consoledev,$baudrate
 $othbootargs;boot
@@ -47,7 +47,7 @@ stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot; protect off $ubootaddr +$filesize; erase $ubootaddr +$filesize; cp.b $loadaddr $ubootaddr $filesize; protect on $ubootaddr +$filesize; cmp.b $loadaddr $ubootaddr $filesize
 ubootaddr=0xeff40000
-uboot=u-boot.bin
+uboot=u-boot-p2020rdb.bin
 vscfw_addr=ef000000
 ipaddr=192.168.1.100
 serverip=192.168.1.1

@@ -2,7 +2,7 @@ baudrate=115200
 bdev=sda3
 bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0xec000000 0xe8000000 0xeff00000
 bootdelay=10
-bootfile=uImage
+bootfile=uImage-p1022ds.bin
 consoledev=ttyS0
 diuerr=md e002c014 1
 diuregs=md e002c000 1d
@@ -10,7 +10,7 @@ eth1addr=00:04:9F:01:6F:72
 ethact=eTSEC1
 ethaddr=00:04:9F:01:6F:71
 fdtaddr=2000000
-fdtfile=p1022ds.dtb
+fdtfile=uImage-p1022ds_32b.dtb
 hostname=p1022ds
 hwconfig=esdhc;audclk:12
 ipaddr=192.168.1.100
@@ -23,8 +23,8 @@ nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:
 norboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0xec000000 0xe8000000 0xeff00000
 perf_mode=stable
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
-ramdiskaddr=4000000
-ramdiskfile=rootfs.ext2.gz.uboot
+ramdiskaddr=5000000
+ramdiskfile=fsl-image-core-p1022ds.ext2.gz.u-boot
 resolution=800x600
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/$bdev rw console=$consoledev,$baudrate $othbootargs;bootm 0xec000000 - 0xeff00000
@@ -32,5 +32,6 @@ serverip=192.168.1.1
 stderr=serial
 stdin=serial
 stdout=serial
-tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesizeuboot=u-boot.bin
+tftpflash=tftpboot $loadaddr $uboot; protect off 0xeff40000 +$filesize; erase 0xeff40000 +$filesize; cp.b $loadaddr 0xeff40000 $filesize; protect on 0xeff40000 +$filesize; cmp.b $loadaddr 0xeff40000 $filesize
+uboot=u-boot-p1022ds.bin
 usb_phy_type=ulpi
