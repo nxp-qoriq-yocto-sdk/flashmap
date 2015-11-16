@@ -16,7 +16,7 @@ eth9addr=00:04:9f:00:67:09
 ethact=FM1@DTSEC2
 ethaddr=00:04:9f:00:67:00
 ethprime=FM1@DTSEC2
-fdtaddr=c00000
+fdtaddr=2000000
 fdtfile=uImage-p4080ds.dtb
 fman_ucode=0xef000000
 gatewayip=192.168.1.1
@@ -28,8 +28,8 @@ netdev=eth0
 netmask=255.255.255.0
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
-ramdiskaddr=2000000
-ramdiskfile=fsl-image-flash-p4080ds.ext2.gz.u-boot
+ramdiskaddr=5000000
+ramdiskfile=fsl-image-mfgtool-p4080ds.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 sataboot=setenv bootargs root=/dev/sda1 rootdelay=5 rw console=$consoledev,$baudrate $othbootargs;bootm e8020000 - e8800000
 serverip=192.168.1.1
@@ -37,5 +37,5 @@ stderr=serial
 stdin=serial
 stdout=serial
 tftpflash=tftpboot $loadaddr $uboot && protect off $ubootaddr +$filesize && erase $ubootaddr +$filesize && cp.b $loadaddr $ubootaddr $filesize && protect on $ubootaddr +$filesize && cmp.b $loadaddr $ubootaddr $filesize
-uboot=u-boot-P4080DS.bin
+uboot=u-boot-nor.bin
 ubootaddr=0xeff80000
