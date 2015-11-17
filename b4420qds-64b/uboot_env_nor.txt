@@ -20,7 +20,7 @@ netmask=255.255.255.0
 nfsboot=setenv bootargs root=/dev/nfs rw nfsroot=$serverip:$rootpath ip=$ipaddr:$serverip:$gatewayip:$netmask:$hostname:$netdev:off console=$consoledev,$baudrate $othbootargs;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr - $fdtaddr
 ramboot=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;tftp $ramdiskaddr $ramdiskfile;tftp $loadaddr $bootfile;tftp $fdtaddr $fdtfile;bootm $loadaddr $ramdiskaddr $fdtaddr
 ramdiskaddr=4000000
-ramdiskfile=fsl-image-flash-b4420qds-64b.ext2.gz.u-boot
+ramdiskfile=fsl-image-mfgtool-b4420qds-64b.ext2.gz.u-boot
 rootpath=/opt/nfsroot
 serverip=192.168.2.1
 stderr=serial
