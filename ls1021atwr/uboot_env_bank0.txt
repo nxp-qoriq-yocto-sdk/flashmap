@@ -1,29 +1,17 @@
 baudrate=115200
-bootcmd=setenv bootargs root=/dev/ram rw console=$consoledev,$baudrate $othbootargs;bootm 0x60120000 0x60920000 0x60020000
-bootargs=root=/dev/ram rw console=$consoledev,$baudrate
+bootargs=root=/dev/ram0 rw console=ttyS0,115200 ramdisksize=1000000
+bootcmd=cp.b 60300000 82000000 700000;cp.b 60a00000 88000000 2000000; cp.b 60200000 8f000000 10000;bootm 82000000 88000000 8f000000;
 bootdelay=3
-bootfile=ls1021atwr/uImage-ls1021atwr.bin
 dnsip=10.192.130.201
-ethact=eTSEC1
-ethprime=eTSEC1
-fdt_high=0xcfffffff
-fdtfile=ls1021atwr/ls1021atwr.dtb
-fileaddr=88000000
-filesize=1245531
-gatewayip=10.192.208.254
-initrd_high=0xcfffffff
-ipaddr=10.192.208.250
-loadaddr=0x82000000
+ethact=eTSEC3
+ethprime=eTSEC3
+fdt_high=0xffffffff
+gatewayip=10.193.20.254
+initrd_high=0xffffffff
+ipaddr=10.193.20.191
 netmask=255.255.255.0
-ramboot=dhcp 82000000 $bootfile;dhcp 8f000000 $fdtfile;dhcp 88000000 $ramdiskfile;bootm 82000000 88000000 8f000000
-usbboot=setenv bootargs root=/dev/sda1 rw console=$consoledev,$baudrate rootdelay=10;bootm 0x60120000 - 0x60020000
-ramdiskfile=ls1021atwr/fsl-image-x11-ls1021atwr.ext2.gz.u-boot
-scsidevs=0
-serverip=10.192.208.141
+scsidevs=1
+serverip=10.192.208.233
 stderr=serial
 stdin=serial
 stdout=serial
-consoledev=ttyLP0
-
-Environment size: 1332/131068 bytes
-
